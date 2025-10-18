@@ -1,0 +1,116 @@
+<div class="update-product pt-5 pe-lg-5 pe-md-4 pe-3">
+  <div class="title d-flex mb-4">
+    <div class="box me-3"></div>
+    <p class="update-product-title">Update Product</p>
+  </div>
+  <div class="update-form p-4 m-auto col-lg-7 col-md-8 col-sm-9 col-11">
+    <label class="label-helper">Product Name</label>
+    <div class="input-cont">
+      <input
+        type="text"
+        class="input px-3 m-auto mb-2 col-12"
+        placeholder="Product Name"
+        [value]="product?.name"
+        (change)="this.productName = name.value"
+        #name
+      />
+      <label class="placeholder">Product Name</label>
+    </div>
+    <label class="label-helper">Product Description</label>
+    <div class="input-cont">
+      <textarea
+        type="text"
+        class="input px-3 m-auto mb-2 col-12 desc"
+        placeholder="Product Description"
+        [value]="product?.description"
+        (change)="this.productDescription = description.value"
+        #description
+      ></textarea>
+      <label class="placeholder">Product Description</label>
+    </div>
+    <div class="price-quantity d-flex justify-content-between gap-2">
+      <div class="w-50">
+        <label class="label-helper">Product Price</label>
+        <div class="input-cont">
+          <input
+            type="number"
+            class="input px-3 m-auto mb-2"
+            placeholder="Product Price"
+            [value]="product?.price"
+            (change)="this.productPrice = price.value"
+            #price
+          />
+          <label class="placeholder">Product Price</label>
+        </div>
+      </div>
+      <div class="w-50">
+        <label class="label-helper">Product Quantity</label>
+        <div class="input-cont">
+          <input
+            type="number"
+            class="input px-3 m-auto mb-2"
+            placeholder="Product Quantity"
+            [value]="this.productQuantity"
+            (change)="this.productQuantity = quantity.value"
+            #quantity
+          />
+          <label class="placeholder">Product Quantity</label>
+        </div>
+      </div>
+    </div>
+    <div class="cat-subcat d-flex justify-content-between gap-2 mb-2">
+      <div class="w-50">
+        <label class="label-helper">Product Category</label>
+        <select
+          [value]="product?.category?._id"
+          (change)="loadSubcategories(category.value)"
+          #category
+          class="form-select"
+        >
+          @for(category of categories; track category._id){
+          <option [value]="category._id"  [selected]="category._id === product?.category?._id">{{ category.name }}</option>
+          }
+        </select>
+      </div>
+      <div class="w-50">
+        <label class="label-helper">Product Subcategory</label>
+        <select
+          [value]="product?.subcategory?._id"
+          (change)="this.productSubcategory = subcategory.value"
+          #subcategory
+          class="form-select"
+        >
+          <option disabled selected>Select Subcategory</option>
+          @for(subcategory of subcategories; track subcategory._id){
+          <option [value]="subcategory._id" [selected]="subcategory._id === product?.subcategory?._id" >{{ subcategory.name }}</option>
+          }
+        </select>
+      </div>
+    </div>
+    <div class="images d-flex justify-content-between gap-2">
+      <div>
+        <label class="label-helper">Product Cover</label>
+        <input
+          type="file"
+          class="form-control"
+          (change)="setProductCover($event)"
+          accept="image/*"
+        />
+      </div>
+      <div>
+        <label class="label-helper">Product Images</label>
+        <input
+          type="file"
+          class="form-control"
+          (change)="setProductImages($event)"
+          accept="image/*"
+          multiple
+        />
+      </div>
+    </div>
+    <div class="btns d-flex justify-content-end mt-4">
+      <button class="cancel-btn" routerLink="/products">Cancel</button>
+      <button class="create-btn ms-3" (click)="updateProduct()">Update</button>
+    </div>
+  </div>
+</div>

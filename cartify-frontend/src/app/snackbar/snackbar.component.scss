@@ -1,0 +1,22 @@
+.snackbar {
+  font-family: "Poppins", sans-serif;
+  min-width: 250px;
+  background-color: #333;
+  color: #f5b214;
+  border: 1px #f5b214 solid;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  position: fixed;
+  z-index: 999;
+  right: -300px;
+  top: 100px;
+  transition: right 0.5s ease, visibility 0s 0.5s;
+}
+
+.snackbar.show {
+  right: 20px;
+  visibility: visible;
+  transition: right 0.5s ease;
+}

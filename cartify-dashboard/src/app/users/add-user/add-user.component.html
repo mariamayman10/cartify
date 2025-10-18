@@ -1,0 +1,121 @@
+<div class="create-user pt-5 pe-lg-5 pe-md-4 pe-3">
+  <div class="title d-flex mb-4">
+    <div class="box me-3"></div>
+    <p class="add-product-title">Add User</p>
+  </div>
+  <div class="create-form p-4 m-auto col-lg-7 col-md-8 col-sm-9 col-11">
+    <form [formGroup]="createUserForm" (ngSubmit)="createUser(createUserForm)">
+      <div class="mb-1">
+        <label class="label-helper">Name</label>
+        <div class="input-cont w-100">
+          <input
+            type="text"
+            class="input px-3 m-auto mb-2"
+            formControlName="name"
+            placeholder="Name"
+          />
+          <label class="placeholder">Name</label>
+        </div>
+        @if(createUserForm.get('name')?.errors !== null &&
+        createUserForm.get('name')?.touched){
+        <div class="text-danger my-1">
+          @if(createUserForm.get('name')?.errors?.['required']){
+          <p class="err ms-1">Name is required</p>
+          } @if(createUserForm.get('name')?.errors?.['minlength'] ||
+          createUserForm.get('name')?.errors?.['maxlength']) {
+          <p class="err ms-1">Name should be between 7 and 20</p>
+          }
+        </div>
+        }
+      </div>
+      <label class="label-helper">Email</label>
+      <div class="mb-1">
+        <div class="input-cont w-100">
+          <input
+            type="email"
+            class="input px-3 m-auto mb-2"
+            formControlName="email"
+            placeholder="Email"
+          />
+          <label class="placeholder">Email</label>
+        </div>
+        @if(createUserForm.get('email')?.errors !== null &&
+        createUserForm.get('email')?.touched){
+        <div class="text-danger my-1">
+          @if(createUserForm.get('email')?.errors?.['required']){
+          <p class="err ms-1">Email is required</p>
+          } @if(createUserForm.get('email')?.errors?.['email']) {
+          <p class="err ms-1">Invalid email</p>
+          }
+        </div>
+        } @if(emailError){
+        <div class="text-danger my-1">
+          <p class="err">{{ emailError }}</p>
+        </div>
+        }
+      </div>
+      <label class="label-helper">Role</label>
+      <div class="mb-1">
+        <select class="form-select" formControlName="role">
+          <option selected disabled>Select User Role</option>
+          <option value="admin">Admin</option>
+          <option value="user">User</option>
+        </select>
+      </div>
+      <label class="label-helper">Password</label>
+      <div class="mb-1">
+        <div class="input-cont w-100">
+          <input
+            type="password"
+            class="input px-3 m-auto mb-2"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <label class="placeholder">Password</label>
+        </div>
+        @if(createUserForm.get('password')?.errors !== null &&
+        createUserForm.get('password')?.touched){
+        <div class="text-danger my-1">
+          @if(createUserForm.get('password')?.errors?.['required']){
+          <p class="err ms-1">Password is required</p>
+          } @if(createUserForm.get('password')?.errors?.['minlength'] ||
+          createUserForm.get('password')?.errors?.['maxlength']){
+          <p class="err ms-1">Password should be between 8 and 20</p>
+          }
+        </div>
+        }
+      </div>
+      <label class="label-helper">Confirm Password</label>
+      <div class="mb-1">
+        <div class="input-cont w-100">
+          <input
+            type="password"
+            class="input px-3 m-auto mb-2"
+            formControlName="confirmPassword"
+            placeholder="Confirm Password"
+          />
+          <label class="placeholder">Confirm Password</label>
+        </div>
+        @if(createUserForm.get('confirmPassword')?.errors !== null &&
+        createUserForm.get('confirmPassword')?.touched){
+        <div class="text-danger my-1">
+          @if(createUserForm.get('confirmPassword')?.errors?.['required']){
+          <p class="err ms-1">Password is required</p>
+          } @if(createUserForm.get('confirmPassword')?.errors?.['minlength'] ||
+          createUserForm.get('confirmPassword')?.errors?.['maxlength']){
+          <p class="err ms-1">Password should be between 8 and 20</p>
+          }
+        </div>
+        } @if(passwordError){
+        <div class="text-danger my-1">
+          <p class="err">{{ passwordError }}</p>
+        </div>
+        }
+      </div>
+      <div class="btns d-flex justify-content-end mt-4">
+        <button class="cancel-btn" routerLink="/users">Cancel</button>
+        <button class="create-btn ms-3">Create</button>
+      </div>
+    </form>
+  </div>
+</div>

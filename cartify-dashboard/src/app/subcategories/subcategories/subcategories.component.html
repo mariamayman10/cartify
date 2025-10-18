@@ -1,0 +1,58 @@
+<div class="subcategories pt-5 pe-lg-5 pe-md-4 pe-3">
+  <div class="title d-flex mb-4">
+    <div class="box me-3"></div>
+    <p class="subcategories-title">All Subcategories</p>
+  </div>
+  <div class="d-flex justify-content-between search-btn">
+    <input
+      type="text"
+      placeholder="Search"
+      class="search mb-5"
+      (input)="searchSubcategories(searchInput.value)"
+      #searchInput
+    />
+    <button class="create-btn px-3" routerLink="create">Create</button>
+  </div>
+  <div
+    class="subcategory-items d-flex gap-3 m-auto justify-content-center flex-wrap"
+  >
+    @for(subcategory of subcategories; track subcategory._id){
+    <div class="subcategory-item p-4">
+      <div class="subcategory-name mb-3">
+        <p>{{ subcategory.name | uppercase }}</p>
+
+        <div class="icons">
+          <a [routerLink]="['/subcategories', subcategory._id, 'update']">
+            <i class="fas fa-pen me-3"></i>
+          </a>
+          <a (click)="deleteSubcategory(subcategory._id)">
+            <i class="fas fa-trash-alt"></i>
+          </a>
+        </div>
+      </div>
+      <p class="subcategory-id">
+        <span class="sp me-2">Subcategory ID </span
+        >{{ subcategory._id | slice : -5 }}
+      </p>
+      <p class="subcategory-category">
+        <span class="sp me-2">Category </span
+        >{{ subcategory.category.name }}
+      </p>
+    </div>
+    }
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center mb-5">
+    @if(pagination.currentPage! > 1){
+    <button class="prev-icon" (click)="changePage(pagination.prev!)">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    }
+    <p class="page mx-2">{{ pagination.currentPage }}</p>
+    @if(pagination.currentPage! < pagination.totalPages!){
+    <button class="next-icon" (click)="changePage(pagination.next!)">
+      <i class="fas fa-arrow-right"></i>
+    </button>
+    }
+  </div>
+</div>

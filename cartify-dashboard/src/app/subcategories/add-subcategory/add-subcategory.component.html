@@ -1,0 +1,54 @@
+<div class="add-subcategory pt-5 pe-lg-5 pe-md-4 pe-3">
+  <div class="title d-flex mb-4">
+    <div class="box me-3"></div>
+    <p class="add-subcategory-title">Add Subcategory</p>
+  </div>
+  <div
+    class="create-form p-lg-4 p-md-4 p-3 m-auto col-lg-7 col-md-8 col-sm-9 col-11"
+  >
+    <form
+      class="p-4"
+      [formGroup]="subcategoryForm"
+      (ngSubmit)="createSubcategory(subcategoryForm)"
+    >
+      <p class="label-helper mb-1">Subcategory Name</p>
+      <div class="input-cont">
+        <input
+          type="text"
+          class="input px-3 m-auto mb-2 col-12"
+          formControlName="name"
+          placeholder="Subcategory Name"
+        />
+        <label class="placeholder">Subcategory Name</label>
+      </div>
+      @if(subcategoryForm.get('name')?.errors !== null &&
+      subcategoryForm.get('name')?.touched && subcategoryError === ''){
+      @if(subcategoryForm.get('name')?.errors?.['required']){
+      <p class="err ms-1 text-danger">Subcategory name is required</p>
+      } } @if(subcategoryError){
+      <p class="err text-danger">{{ subcategoryError }}</p>
+      }
+      <p class="label-helper mb-1">Category</p>
+      <select
+        formControlName="category"
+        class="form-select select-category px-3"
+      >
+        <option value="" disabled selected>Select Category</option>
+        @for(category of categories; track category._id){
+        <option [value]="category._id">{{ category.name }}</option>
+        }
+      </select>
+      @if(subcategoryForm.get('category')?.errors !== null &&
+      subcategoryForm.get('category')?.touched && subcategoryError === ''){
+      @if(subcategoryForm.get('category')?.errors?.['required']){
+      <p class="err ms-1 text-danger">Subcategory's category is required</p>
+      }}
+      <div class="btns d-flex justify-content-end mt-4">
+        <button class="cancel-btn" routerLink="/subcategories">Cancel</button>
+        <button [disabled]="subcategoryForm.invalid" class="create-btn ms-3">
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

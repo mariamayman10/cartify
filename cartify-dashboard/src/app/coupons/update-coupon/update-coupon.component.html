@@ -1,0 +1,66 @@
+<div class="update-coupon pt-5 pe-lg-5 pe-md-4 pe-3">
+  <div class="title d-flex mb-4">
+    <div class="box me-3"></div>
+    <p class="update-coupon-title">Update Coupon</p>
+  </div>
+  <div
+    class="update-form p-lg-4 p-md-4 p-3 m-auto col-lg-7 col-md-8 col-sm-9 col-11"
+  >
+    <form
+      class="p-4"
+      [formGroup]="couponForm"
+      (ngSubmit)="updateCoupon(couponForm)"
+    >
+      <p class="label">Coupon Code</p>
+      <div class="input-cont">
+        <input
+          type="text"
+          class="input px-3 m-auto mb-2 col-12"
+          formControlName="code"
+          placeholder="Coupon Code"
+          [value]="coupon.code"
+        />
+        <label class="placeholder">Coupon Name</label>
+      </div>
+      @if(couponCodeError){
+      <p class="err text-danger">{{ couponCodeError }}</p>
+      }
+
+      <p class="label">Coupon Discount</p>
+      <div class="input-cont">
+        <input
+          type="number"
+          class="input px-3 m-auto mb-2 col-12"
+          formControlName="discount"
+          placeholder="Coupon Discount"
+          [value]="coupon.discount"
+        />
+        <label class="placeholder">Coupon Discount</label>
+      </div>
+      @if(couponDiscountError){
+      <p class="err text-danger">{{ couponDiscountError }}</p>
+      }
+
+      <p class="label">Coupon Expire Date</p>
+      <div class="input-cont">
+        <input
+          type="date"
+          class="input px-3 m-auto mb-2 col-12"
+          formControlName="expireDate"
+          placeholder="Coupon Expire Date"
+          [value]="coupon.expireDate | date : 'yyyy-MM-dd'"
+        />
+        <label class="placeholder">Coupon Expire Date</label>
+      </div>
+      @if(couponDateError){
+      <p class="err text-danger">{{ couponDateError }}</p>
+      }
+      <div class="btns d-flex justify-content-end mt-4">
+        <button class="cancel-btn" routerLink="/categories">Cancel</button>
+        <button [disabled]="couponForm.invalid" class="create-btn ms-3">
+          Update
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

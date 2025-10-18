@@ -1,0 +1,66 @@
+<div class="product-details pt-5 pe-lg-5 pe-md-4 pe-sm-3 pe-3 mb-5 mt-3">
+  <div class="title d-flex mb-3">
+    <div class="box me-3"></div>
+    <p class="product-details-title">Product Details</p>
+  </div>
+  <div class="product mt-4 d-flex px-lg-5 px-md-4 px-sm-3 col-12">
+    <div class="imgs">
+      <img [src]="imgDomain + product.cover" class="product-cover mb-2" />
+      <div class="product-imgs d-flex">
+        @for(img of product.images; track img){
+        <img [src]="imgDomain + img" class="product-img" />
+        }
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-name">{{ product.name }}</p>
+      <div class="product-stats d-flex">
+        <div class="product-rate me-3">
+          <ng-container *ngFor="let _ of [].constructor(fullStars)">
+            <i class="fas fa-star" style="color: #f5b214"></i>
+          </ng-container>
+          <ng-container *ngIf="halfStar">
+            <i class="fas fa-star-half-alt" style="color: #f5b214"></i>
+          </ng-container>
+          <ng-container *ngFor="let _ of [].constructor(emptyStars)">
+            <i class="far fa-star" style="color: #f5b214"></i>
+          </ng-container>
+
+          <span>({{ product.ratingAverage }})</span>
+        </div>
+        <p class="product-reviews me-3">{{product.reviews.length}} Reviews</p>
+        <p class="product-sold">{{ product.sold }} Sold</p>
+      </div>
+      <p class="title">Price</p>
+      <div class="product-prices d-flex">
+        <p
+          class="product-price"
+          [class.strikethrough]="product.priceAfterDiscount"
+        >
+          {{ product.price | currency }}
+        </p>
+        @if (product.priceAfterDiscount) {
+        <p class="product-discount ms-3">
+          {{ product.priceAfterDiscount | currency }}
+        </p>
+        }
+      </div>
+      <p class="title">Description</p>
+      <p class="product-desc">{{ product.description }}</p>
+    </div>
+  </div>
+  @if (product.reviews.length > 0) {
+  <div class="product-reviews px-lg-5 px-md-4 px-sm-3 col-12">
+    <p class="reviews-title">Reviews</p>
+    @for (review of product?.reviews; track review._id) {
+    <div class="mt-3 review p-3">
+      <div class="d-flex justify-content-between">
+        <p>{{ review?.user?.name }}</p>
+        <p><span class="title">Rate</span> {{ review.rate }}</p>
+      </div>
+      <div><span class="title">Comment </span>{{ review?.comment }}</div>
+    </div>
+    }
+  </div>
+  }
+</div>

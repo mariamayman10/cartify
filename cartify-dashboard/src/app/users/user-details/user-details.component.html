@@ -1,0 +1,120 @@
+<div class="profile pt-3 pe-lg-5 pe-md-4 pe-sm-3 pe-3 mb-5 mt-3">
+  <div class="d-flex mb-3">
+    <div class="box"></div>
+    &nbsp;&nbsp;
+    <p class="profile-title">Update User</p>
+  </div>
+  <div class="update-info p-4 col-lg-6 col-md-7 col-sm-9 col-12 m-auto">
+    <p class="info-title">User Info</p>
+    <div class="d-flex justify-content-between flex-wrap">
+      <div class="user-img-div me-3 mb-3">
+        @if(user.image === undefined){
+        <p class="no-pp">No Profile Picture</p>
+        } @else {
+        <img [src]="userImage + user.image" class="user-img" />
+        }
+      </div>
+      <div class="info flex-grow-1">
+        <p class="user-email mb-2">
+          <span class="sp">Email</span> {{ user.email }}
+        </p>
+        <div>
+          <span class="sp">Name</span>
+          <input
+            class="name-input mb-2"
+            type="text"
+            (change)="getName(userName.value)"
+            #userName
+            [value]="user.name"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <input
+            type="file"
+            class="form-control w-50 file-input"
+            id="inputGroupFile02"
+            accept="image/*"
+            (change)="getFile($event)"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button class="update-btn me-2" (click)="updateUser()">Update</button>
+      <button class="update-btn" (click)="deleteUser()">Delete</button>
+    </div>
+  </div>
+
+  <div
+    class="change-password p-4 col-lg-6 col-md-7 col-sm-9 col-12 mt-5 m-auto"
+  >
+    <p class="change-password-title">Change Password</p>
+    <form
+      [formGroup]="passwordForm"
+      (ngSubmit)="changeUserPassword(passwordForm)"
+    >
+      <div class="input-cont w-100">
+        <input
+          type="password"
+          class="input px-3 m-auto mb-2"
+          formControlName="currentPassword"
+          placeholder="Current Password"
+        />
+        <label class="placeholder">Current Password</label>
+      </div>
+      @if(passwordForm.get('currentPassword')?.errors!==null&&passwordForm.get('currentPassword')?.touched&&currentPasswordError===''){
+      @if(passwordForm.get('currentPassword')?.errors?.['required']){
+      <p class="err">Current password required</p>
+      }
+      @if(passwordForm.get('currentPassword')?.errors?.['minlength']||passwordForm.get('currentPassword')?.errors?.['maxlength'])
+      {
+      <p class="err">Current password length should be between 6, 20</p>
+      } } @if(currentPasswordError !== ''){
+      <p class="err">{{ currentPasswordError }}</p>
+      }
+      <div class="input-cont w-100">
+        <input
+          type="password"
+          class="input px-3 m-auto mb-2"
+          formControlName="newPassword"
+          placeholder="New Password"
+        />
+        <label class="placeholder">New Password</label>
+      </div>
+      @if(passwordForm.get('newPassword')?.errors!==null&&passwordForm.get('newPassword')?.touched){
+      @if(passwordForm.get('newPassword')?.errors?.['required']){
+      <p class="err">New password required</p>
+      }
+      @if(passwordForm.get('newPassword')?.errors?.['minlength']||passwordForm.get('newPassword')?.errors?.['maxlength'])
+      {
+      <p class="err">New password length should be between 6, 20</p>
+      } }
+      <div class="input-cont w-100">
+        <input
+          type="password"
+          class="input px-3 m-auto mb-2"
+          formControlName="confirmPassword"
+          placeholder="Confirm Password"
+        />
+        <label class="placeholder">Confirm Password</label>
+      </div>
+      @if(passwordForm.get('confirmPassword')?.errors!==null&&passwordForm.get('confirmPassword')?.touched&&passwordError===''){
+      @if(passwordForm.get('confirmPassword')?.errors?.['required']){
+      <p class="err">Confirm password required</p>
+      }
+      @if(passwordForm.get('confirmPassword')?.errors?.['minlength']||passwordForm.get('confirmPassword')?.errors?.['maxlength'])
+      {
+      <p class="err">Confirm password length should be between 6, 20</p>
+      } }@if(passwordError !== ''){
+      <p class="err">{{ passwordError }}</p>
+      }
+    </form>
+    <button
+      [disabled]="passwordForm.invalid"
+      class="change-btn"
+      (click)="changeUserPassword(passwordForm)"
+    >
+      Change
+    </button>
+  </div>
+</div>

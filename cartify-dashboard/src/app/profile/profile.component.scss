@@ -1,0 +1,189 @@
+.profile {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  padding-left: 75px;
+}
+.profile-title {
+  font-size: 23px;
+  font-weight: 600;
+}
+.box {
+  height: 40px;
+  width: 10px;
+  background-color: #f5d714;
+}
+.update-info {
+  .info-title {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  .user-img-div {
+    width: fit-content;
+    margin-right: 5px;
+    .user-img {
+      height: 70px;
+      width: 70px;
+    }
+    .no-pp {
+      text-align: center;
+      padding: 4px;
+      height: 90px;
+      width: 90px;
+      background-color: #9d9d9d;
+      color: #fcfcfc;
+    }
+  }
+  .info {
+    .sp {
+      margin-right: 5px;
+      font-weight: 500;
+      font-size: 15px;
+      color: #8c8c8c;
+    }
+    .user-email {
+      font-size: 14px;
+    }
+    .name-input {
+      padding: 3px 5px 3px 5px;
+      background-color: transparent;
+      border: none;
+      font-size: 14px;
+      border-radius: 6px;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      -ms-border-radius: 6px;
+      -o-border-radius: 6px;
+    }
+    .name-input:focus {
+      border: 1px #f5b214 solid;
+      outline: none;
+    }
+    .file-input:focus {
+      border: 1px #f5b214 solid;
+      box-shadow: none;
+      outline: none;
+    }
+  }
+  .update-btn {
+    display: block;
+    margin-left: auto;
+    border: none;
+    font-size: 15px;
+    width: 100px;
+    height: 30px;
+    background-color: #f5b214;
+    font-weight: 500;
+    color: #fff;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+  }
+}
+.err {
+  font-weight: 200;
+  font-size: 13px;
+  color: red;
+}
+.change-password {
+  .change-password-title {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  .password-input:focus {
+    border: 1px #f5b214 solid;
+    box-shadow: none;
+    outline: none;
+    display: block;
+  }
+  .change-btn {
+    display: block;
+    margin-left: auto;
+    border: none;
+    font-size: 15px;
+    width: 100px;
+    height: 30px;
+    background-color: #f5b214;
+    font-weight: 500;
+    color: #fff;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+  }
+  .input-cont {
+    width: 250px;
+    position: relative;
+    margin: auto;
+  }
+  .placeholder:hover {
+    cursor: auto;
+  }
+  .input {
+    font-family: "Poppins", sans-serif;
+    outline: none;
+    height: 40px;
+    width: 100%;
+    border-radius: 4px;
+    transition: 0.3s;
+    font-size: 12px;
+    border: 1px solid #8a8a8a;
+  }
+  .placeholder {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    transform: translateY(-50%);
+    padding-left: 4.5px;
+    padding-bottom: 2px;
+    font-size: 10px;
+    color: #858585;
+    background-color: transparent;
+    transition: 0.3s;
+    display: none;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+  }
+  .input:focus + .placeholder {
+    display: block;
+  }
+  .input::placeholder {
+    transition: 0.3s;
+    font-size: 13px;
+    font-family: "Poppins", sans-serif;
+  }
+  .input:focus::placeholder {
+    color: transparent;
+  }
+  .input:hover,
+  .input:focus {
+    border-color: #f5b214;
+  }
+}
+//f5b214

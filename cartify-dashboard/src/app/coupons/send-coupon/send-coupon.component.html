@@ -1,0 +1,34 @@
+<div class="send-coupon pt-5 pe-lg-5 pe-md-4 pe-3">
+  <div class="title d-flex mb-4">
+    <div class="box me-3"></div>
+    <p class="send-coupon-title">Send Coupon</p>
+  </div>
+  <div>
+    <form
+      class="send-form p-4"
+      [formGroup]="userForm"
+      (ngSubmit)="sendCoupon(userForm)"
+    >
+      <p class="">Sending <span class="coupon-span">{{ coupon.code }}</span>  with discount <span class="coupon-span">{{ coupon.discount }}%</span></p>
+      <p class="label">User Email</p>
+      <div class="input-cont">
+        <input
+          type="email"
+          class="input px-3 m-auto mb-2 col-12"
+          formControlName="email"
+          placeholder="User Email"
+        />
+        <label class="placeholder">User Email</label>
+      </div>
+      @if(couponError){
+      <p class="err text-danger">{{ couponError }}</p>
+      }
+      <div class="btns d-flex justify-content-end mt-4">
+        <button class="cancel-btn" routerLink="/categories">Cancel</button>
+        <button [disabled]="userForm.invalid" class="create-btn ms-3">
+          Send
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

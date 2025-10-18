@@ -1,0 +1,96 @@
+<div class="orders pt-3 pe-lg-5 pe-md-4 pe-sm-3 pe-3 mb-5 mt-3">
+  <div class="title d-flex pt-5 mb-4">
+    <div class="box"></div>
+    &nbsp;&nbsp;
+    <p class="orders-title">All Orders</p>
+  </div>
+  <div class="d-flex justify-content-between search-btn">
+    <input
+      type="text"
+      placeholder="Search"
+      class="search mb-5"
+      (input)="searchData(searchInput.value)"
+      #searchInput
+    />
+  </div>
+  @for(order of orders; track order._id){
+  <div class="order col-lg-7 col-md-8 col-sm-10 col-11 p-4 m-auto mb-3">
+    <div class="order-r1">
+      <p class="order-id">
+        <span class="sp">Order Id</span> &nbsp;{{ order._id | slice : -5 }}
+      </p>
+      <a [routerLink]="['/orders', order._id, 'details']"><i class="fas fa-eye"></i></a>
+    </div>
+
+    <div class="order-r2 mb-1">
+      <p class="order-placed-date mb-0">
+        <span class="sp">Placed Date</span> &nbsp;{{ order.createdAt | date }}
+      </p>
+      <p class="order-price mb-0">
+        <span class="sp">Total Price</span> &nbsp;{{
+          order.totalPrice + order.taxPrice | currency
+        }}
+      </p>
+    </div>
+    <div class="order-r3 mb-1">
+      @if(order.isDelivered){
+      <p class="delivered mb-0">
+        <span class="sp">Delivery Status</span>&nbsp; Delivered
+      </p>
+      <p class="mb-1">
+        <span class="sp">Delivery date</span>&nbsp;{{
+          order.DeliveredDate | date
+        }}
+      </p>
+      }@else {
+      <p class="pending mb-1">
+        <span class="sp">Delivery Status</span>&nbsp; Pending
+      </p>
+      }
+    </div>
+    <div class="order-r4">
+      @if(order.isPaid){
+      <p class="yes mb-0"><span class="sp">Payment Status</span>&nbsp; Paid</p>
+      <p><span class="sp">Paid date</span>&nbsp;{{ order.PaidDate | date }}</p>
+      }@else {
+      <p class="no"><span class="sp">Payment Status</span>&nbsp; Pending</p>
+      }
+    </div>
+    <div
+      class="order-r5 d-flex justify-content-between align-items-center flex-wrap"
+    >
+      <div class="products-imgs d-flex">
+        @for (item of order.cartItems.slice(0, 3); track item._id) {
+        <img [src]="imgDomain + item.product.cover" class="product-img me-2" />
+        } @if(order.cartItems.length > 3){
+        <div class="extra-images-box ms-2 text-center">
+          +{{ order.cartItems.length - 3 }}
+        </div>
+        }
+      </div>
+      <div class="btns mt-lg-0 mt-md-0 mt-sm-0 mt-3">
+        <button
+          (click)="updateDelivered(order._id)"
+          class="px-3 me-2 mb-lg-0 mb-md-0 mb-sm-0 mb-2"
+        >
+          Set Delivered
+        </button>
+        <button (click)="updatePaid(order._id)" class="px-3">Set Paid</button>
+      </div>
+    </div>
+  </div>
+  }
+  <div class="d-flex justify-content-center align-items-center mb-5">
+    @if(pagination.currentPage! > 1){
+    <button class="prev-icon" (click)="changePage(pagination.prev!)">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    }
+    <p class="page mx-2">{{ pagination.currentPage }}</p>
+    @if(pagination.currentPage! < pagination.totalPages!){
+    <button class="next-icon" (click)="changePage(pagination.next!)">
+      <i class="fas fa-arrow-right"></i>
+    </button>
+    }
+  </div>
+</div>

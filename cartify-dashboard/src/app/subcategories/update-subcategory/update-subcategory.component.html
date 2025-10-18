@@ -1,0 +1,60 @@
+<div class="update-subcategory pt-5 pe-lg-5 pe-md-4 pe-3">
+  <div class="title d-flex mb-4">
+    <div class="box me-3"></div>
+    <p class="update-subcategory-title">Update Subcategory</p>
+  </div>
+  <div
+    class="update-form p-lg-4 p-md-4 p-3 m-auto col-lg-7 col-md-8 col-sm-9 col-11"
+  >
+    <form
+      class="p-4"
+      [formGroup]="subcategoryForm"
+      (ngSubmit)="updateSubcategory(subcategoryForm)"
+    >
+      <p class="label">Subcategory Name</p>
+      <div class="input-cont">
+        <input
+          type="text"
+          class="input px-3 m-auto mb-2 col-12"
+          formControlName="name"
+          placeholder="Subcategory Name"
+          [value]="subcategory.name"
+        />
+        <label class="placeholder">Subcategory Name</label>
+      </div>
+      @if(subcategoryForm.get('name')?.errors !== null &&
+      subcategoryForm.get('name')?.touched && subcategoryError === ''){
+      <div class="text-danger my-1">
+        @if(subcategoryForm.get('name')?.errors?.['required']){
+        <p class="err ms-1">Category name is required</p>
+        }
+      </div>
+      } @if(subcategoryError){
+      <div class="text-danger my-1">
+        <p class="err">{{ subcategoryError }}</p>
+      </div>
+      }
+      <select
+        formControlName="category"
+        class="form-select select-category px-3"
+      >
+        <option disabled>Select Category</option>
+        @for(category of categories; track category._id){
+        <option
+          [value]="category._id"
+          [selected]="subcategory.category._id === category._id"
+        >
+          {{ category.name }}
+        </option>
+        }
+      </select>
+      @if(subcategoryError!==''){
+      <p class="err">{{ subcategoryError }}</p>
+      }
+      <div class="btns d-flex justify-content-end mt-4">
+        <button class="cancel-btn" routerLink="/subcategories">Cancel</button>
+        <button class="update-btn ms-3">Update</button>
+      </div>
+    </form>
+  </div>
+</div>

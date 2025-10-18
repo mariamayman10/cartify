@@ -1,0 +1,76 @@
+<div class="add-coupon pt-5 pe-lg-5 pe-md-4 pe-3">
+  <div class="title d-flex mb-4">
+    <div class="box me-3"></div>
+    <p class="add-coupon-title">Add Coupon</p>
+  </div>
+  <div
+    class="create-form p-lg-4 p-md-4 p-3 m-auto col-lg-7 col-md-8 col-sm-9 col-11"
+  >
+    <form
+      class="p-4"
+      [formGroup]="couponForm"
+      (ngSubmit)="createCoupon(couponForm)"
+    >
+      <p class="label">Coupon Code</p>
+      <div class="input-cont">
+        <input
+          type="text"
+          class="input px-3 m-auto mb-2 col-12"
+          formControlName="code"
+          placeholder="Coupon Code"
+        />
+        <label class="placeholder">Coupon Name</label>
+      </div>
+      @if(couponForm.get('code')?.errors !== null &&
+      couponForm.get('code')?.touched && couponError === ''){
+        @if(couponForm.get('code')?.errors?.['required']){
+        <p class="err text-danger ms-1">Coupon code is required</p>
+        }
+      } @if(couponError){
+        <p class="err text-danger">{{ couponError }}</p>
+      }
+
+      <p class="label">Coupon Discount</p>
+      <div class="input-cont">
+        <input
+          type="number"
+          class="input px-3 m-auto mb-2 col-12"
+          formControlName="discount"
+          placeholder="Coupon Discount"
+        />
+        <label class="placeholder">Coupon Discount</label>
+      </div>
+      @if(couponForm.get('discount')?.errors !== null &&
+      couponForm.get('discount')?.touched && couponError === ''){
+        @if(couponForm.get('discount')?.errors?.['required']){
+        <p class="err text-danger ms-1">Coupon discount is required</p>
+        }
+      } @if(couponError){
+        <p class="err text-danger">{{ couponError }}</p>
+      }
+
+      <p class="label">Coupon Expire Date</p>
+      <div class="input-cont">
+        <input
+          type="date"
+          class="input px-3 m-auto mb-2 col-12"
+          formControlName="expireDate"
+          placeholder="Coupon Expire Date"
+        />
+        <label class="placeholder">Coupon Expire Date</label>
+      </div>
+      @if(couponForm.get('expireDate')?.errors !== null &&
+      couponForm.get('expireDate')?.touched && couponError === ''){
+        @if(couponForm.get('expireDate')?.errors?.['required']){
+        <p class="err text-danger ms-1">Coupon's expire date is required</p>
+        }
+      } @if(couponError){
+        <p class="err text-danger">{{ couponError }}</p>
+      }
+      <div class="btns d-flex justify-content-end mt-4">
+        <button class="cancel-btn" routerLink="/categories">Cancel</button>
+        <button [disabled]="couponForm.invalid" class="create-btn ms-3">Create</button>
+      </div>
+    </form>
+  </div>
+</div>

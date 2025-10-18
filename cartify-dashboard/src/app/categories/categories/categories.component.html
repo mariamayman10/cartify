@@ -1,0 +1,57 @@
+<div class="categories pt-5 pe-lg-5 pe-md-4 pe-3">
+  <div class="title d-flex mb-4">
+    <div class="box me-3"></div>
+    <p class="categories-title">All Categories</p>
+  </div>
+  <div class="d-flex justify-content-between search-btn">
+    <input
+      type="text"
+      placeholder="Search"
+      class="search mb-5"
+      (input)="searchCategories(searchInput.value)"
+      #searchInput
+    />
+    <button class="create-btn px-3" routerLink="create">Create</button>
+  </div>
+  <div
+    class="category-items d-flex gap-3 m-auto justify-content-center flex-wrap"
+  >
+    @for(category of categories; track category._id){
+    <div class="category-item p-4">
+      <div class="category-name mb-3">
+        <p>{{ category.name | uppercase }}</p>
+
+        <div class="icons">
+          <a [routerLink]="['/categories', category._id, 'update']">
+            <i class="fas fa-pen me-3"></i>
+          </a>
+          <a (click)="deleteCategory(category._id)">
+            <i class="fas fa-trash-alt"></i>
+          </a>
+        </div>
+      </div>
+      <p class="category-id">
+        <span class="sp me-2">Category ID </span>{{ category._id | slice : -5 }}
+      </p>
+      <p class="category-sub">
+        <span class="sp me-2">No of Subcategories </span
+        >{{ subcategoriesCount[category._id] || 0 }}
+      </p>
+    </div>
+    }
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center mb-5">
+    @if(pagination.currentPage! > 1){
+    <button class="prev-icon" (click)="changePage(pagination.prev!)">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    }
+    <p class="page mx-2">{{ pagination.currentPage }}</p>
+    @if(pagination.currentPage! < pagination.totalPages!){
+    <button class="next-icon" (click)="changePage(pagination.next!)">
+      <i class="fas fa-arrow-right"></i>
+    </button>
+    }
+  </div>
+</div>

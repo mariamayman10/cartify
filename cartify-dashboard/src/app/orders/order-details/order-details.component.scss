@@ -1,0 +1,80 @@
+.order-details {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+    padding-left: 75px;
+
+  .order {
+    .section-title{
+      font-weight: 600;
+      font-size: 20px;
+      color: #f5b214;
+    }
+    .order-title {
+      color: #000;
+      font-size: 25px;
+      font-weight: bold;
+      .order-id {
+        color: #f5b214;
+      }
+    }
+    .table-container {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      .table-wrapper {
+        overflow-x: auto;
+      }
+      table {
+        min-width: 600px;
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        thead th {
+          padding: 15px;
+          font-weight: bold;
+          font-size: 16px;
+        }
+        tbody {
+          td {
+            padding: 15px;
+            vertical-align: middle;
+            font-size: 15px;
+          }
+          tr {
+            border-bottom: 1px solid #e0e0e0;
+            .product {
+              img {
+                width: 70px;
+                height: 70px;
+                border-radius: 8px;
+                -webkit-border-radius: 8px;
+                -moz-border-radius: 8px;
+                -ms-border-radius: 8px;
+                -o-border-radius: 8px;
+              }
+            }
+          }
+          tr:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+    .order-summary, .order-address {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      .property{
+        font-weight: 500;
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+<div
+  [ngClass]="{ 'menu-collapsed': !menuVisible }"
+  [ngStyle]="{ 'padding.px': menuVisible ? 40 : 6 }"
+  class="menubar-cont"
+>
+  <div (click)="toggleMenu()" class="icon-div">
+    @if(menuVisible){
+    <i class="fas fa-angle-left"></i>
+    }@else {<i class="fas fa-angle-right"></i>}
+  </div>
+  <div class="menubar">
+    <div class="user mb-4 d-flex align-items-center" *ngIf="menuVisible">
+      <img [src]="imgDomain + user.image" alt="" />
+      <div class="user-info ms-3">
+        <p class="name mb-0">{{ user.name }}</p>
+        <p class="role">{{ user.role }}</p>
+      </div>
+    </div>
+    <div class="links">
+      <a routerLink="/dashboard" routerLinkActive="active"
+        ><span class="me-3"><i class="fas fa-chart-line"></i></span
+        ><span class="link-text">Dashboard</span></a
+      >
+      <a *ngIf="isManager" routerLink="/users" routerLinkActive="active"
+        ><span class="me-3"><i class="fas fa-users"></i></span
+        ><span class="link-text">Users</span></a
+      >
+      <a routerLink="/products" routerLinkActive="active"
+        ><span class="me-3"><i class="fas fa-box"></i></span
+        ><span class="link-text">Products</span></a
+      >
+      <a routerLink="/categories" routerLinkActive="active"
+        ><span class="me-3"><i class="fas fa-folder"></i></span
+        ><span class="link-text">Categories</span></a
+      >
+      <a routerLink="/subcategories" routerLinkActive="active"
+        ><span class="me-3"><i class="fas fa-folder-open"></i></span
+        ><span class="link-text">Subcategories</span></a
+      >
+      <a routerLink="/orders" routerLinkActive="active"
+        ><span class="me-3"><i class="fas fa-receipt"></i></span
+        ><span class="link-text">Orders</span></a
+      >
+      <a routerLink="/coupons" routerLinkActive="active"
+        ><span class="me-3"><i class="fas fa-ticket-alt"></i></span
+        ><span class="link-text">Coupons</span></a
+      >
+      <a routerLink="/profile" routerLinkActive="active"
+        ><span class="me-3"><i class="fas fa-user-alt"></i></span
+        ><span class="link-text">Profile</span></a
+      >
+      <a (click)="logout()"
+        ><span class="me-3"><i class="fas fa-sign-out-alt"></i></span
+        ><span class="link-text">Logout</span></a
+      >
+    </div>
+  </div>
+</div>

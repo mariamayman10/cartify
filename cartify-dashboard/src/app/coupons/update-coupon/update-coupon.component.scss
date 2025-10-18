@@ -1,0 +1,114 @@
+.update-coupon {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+    padding-left: 75px;
+
+  .title {
+    .box {
+      height: 40px;
+      width: 10px;
+      background-color: #f5d714;
+    }
+    .update-coupon-title {
+      font-size: 23px;
+      font-weight: 600;
+    }
+  }
+  .update-form {
+    background-color: #fcfcfc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    .err {
+      font-weight: 200;
+      font-size: 13px;
+    }
+    .label {
+      font-size: 16px;
+      font-weight: 500;
+      color: #858585;
+    }
+    .input-cont {
+      position: relative;
+      margin: auto;
+      .placeholder:hover {
+        cursor: auto;
+      }
+      .input {
+        font-family: "Poppins", sans-serif;
+        outline: none;
+        height: 40px;
+        width: 100%;
+        border-radius: 4px;
+        transition: 0.3s;
+        font-size: 12px;
+        border: 1px solid #8a8a8a;
+      }
+      .placeholder {
+        position: absolute;
+        top: 10px;
+        left: 12px;
+        transform: translateY(-50%);
+        padding-left: 4.5px;
+        padding-bottom: 2px;
+        font-size: 10px;
+        color: #858585;
+        background-color: transparent;
+        transition: 0.3s;
+        display: none;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+      }
+      .input:focus + .placeholder {
+        display: block;
+      }
+      .input::placeholder {
+        transition: 0.3s;
+        font-size: 13px;
+        font-family: "Poppins", sans-serif;
+      }
+      .input:focus::placeholder {
+        color: transparent;
+      }
+      .input:hover,
+      .input:focus {
+        border-color: #f5b214;
+      }
+    }
+    .btns {
+      .create-btn,
+      .cancel-btn {
+        font-size: 14px;
+        border: none;
+        width: 100px;
+        height: 40px;
+        background-color: #f5b214;
+        font-weight: 500;
+        color: #fff;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+        transition: 0.5s;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        -o-transition: 0.5s;
+      }
+      .create-btn:disabled {
+        background-color: #858585;
+      }
+      .cancel-btn {
+        background-color: transparent;
+        border: 1px #f5b214 solid;
+        color: #f5b214;
+      }
+    }
+  }
+}

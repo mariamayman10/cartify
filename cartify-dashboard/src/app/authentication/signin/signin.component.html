@@ -1,0 +1,69 @@
+<div class="signin d-flex align-items-center">
+  <div class="signin-section col-lg-8 col-md-10 col-11 d-flex m-auto mb-5 mt-5">
+    <div class="signin-gradient">
+      <img src="images/signin.png" class="signin-img" />
+    </div>
+    <div class="signin-container p-lg-5 p-md-5 p-4">
+      <p class="signin-title mb-0">SIGN IN</p>
+      <p class="welcome">Welcome Back!</p>
+      <form [formGroup]="signinForm" (ngSubmit)="signIn(signinForm)">
+        <div class="mb-3">
+          <div class="input-cont w-100">
+            <input
+              type="email"
+              class="input px-3 m-auto mb-2"
+              formControlName="email"
+              placeholder="Email"
+            />
+            <label class="placeholder">Email</label>
+          </div>
+          @if(signinForm.get('email')?.errors !== null &&
+          signinForm.get('email')?.touched){
+          <div class="text-danger my-1">
+            @if(signinForm.get('email')?.errors?.['required']){
+            <p class="err ms-1">Email is required</p>
+            } @if(signinForm.get('email')?.errors?.['email']) {
+            <p class="err ms-1">Invalid email</p>
+            }
+          </div>
+          } @if(invalidSignIn){
+          <div class="text-danger my-1">
+            <p class="err">{{ invalidSignIn }}</p>
+          </div>
+          }
+        </div>
+        <div class="mb-3">
+          <div class="input-cont w-100">
+            <input
+              type="password"
+              class="input px-3 m-auto mb-2"
+              formControlName="password"
+              placeholder="Password"
+            />
+            <label class="placeholder">Password</label>
+          </div>
+          @if(signinForm.get('password')?.errors !== null &&
+          signinForm.get('password')?.touched){
+          <div class="text-danger my-1">
+            @if(signinForm.get('password')?.errors?.['required']){
+            <p class="err ms-1">Password is required</p>
+            } @if(signinForm.get('password')?.errors?.['minlength'] ||
+            signinForm.get('password')?.errors?.['maxlength']){
+            <p class="err ms-1">Password should be between 8 and 20</p>
+            }
+          </div>
+          }
+        </div>
+        <div class="btn-cont mt-4 d-flex justify-content-between">
+          <a href="#" routerLink="/forgetPassword">Forgot Password?</a>
+          <button
+            class="form-control signin-btn"
+            [disabled]="signinForm.invalid"
+          >
+            SignIn
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

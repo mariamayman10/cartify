@@ -1,0 +1,87 @@
+<div class="order-details pt-5 pe-lg-5 pe-md-4 pe-sm-3 pe-3 mb-5 mt-3">
+  <div class="order">
+    <p class="order-title">
+      Order ID <span class="order-id ms-2">#{{ order._id | slice : -5 }}</span>
+    </p>
+    <div class="table-container mb-5">
+      <p class="section-title">Order Items</p>
+      <div class="table-wrapper">
+        <table class="order-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Qty</th>
+              <th>Price</th>
+              <th>Total Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(item of order.cartItems; track item._id){
+            <tr class="table-row">
+              <td class="product">
+                <div class="d-flex align-items-center">
+                  <img [src]="imgDomain + item.product.cover" />
+                  <p class="ms-2 product-name">{{ item.product.name }}</p>
+                </div>
+              </td>
+              <td class="product-qty">x {{ item.quantity }}</td>
+              <td class="product-price">{{ item.price | currency }}</td>
+              <td class="product-tprice">
+                {{ item.price * item.quantity | currency }}
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="order-summary mb-5">
+      <p class="section-title">Order Summary</p>
+      <div class="d-flex justify-content-between flex-wrap">
+        <p class="property">Order Created</p>
+        <p>{{ order.createdAt | date }}</p>
+      </div>
+      <div class="d-flex justify-content-between flex-wrap">
+        <p class="property">Order Time</p>
+        <p>{{ extractTime(order.createdAt) }}</p>
+      </div>
+      <div class="d-flex justify-content-between flex-wrap">
+        <p class="property">Subtotal</p>
+        <p>{{ order.totalPrice }}</p>
+      </div>
+      @if (order.totalPriceAfterDiscount) {
+      <div class="d-flex justify-content-between flex-wrap">
+        <p class="property">Subtotal After Discount</p>
+        <p>{{ order.totalPriceAfterDiscount }}</p>
+      </div>
+      }
+      <div class="d-flex justify-content-between flex-wrap">
+        <p class="property">Payment Method:</p>
+        <p>{{ order.payment }}</p>
+      </div>
+      <div class="d-flex justify-content-between flex-wrap">
+        <p class="property">Delivery Fees</p>
+        <p>{{ order.taxPrice | currency }}</p>
+      </div>
+    </div>
+    <div class="order-address">
+      <p class="section-title">Delivery Address</p>
+      <div class="d-flex justify-content-between flex-wrap">
+        <p class="property">City</p>
+        <p>{{ order.address.city }}</p>
+      </div>
+      <div class="d-flex justify-content-between flex-wrap">
+        <p class="property">State</p>
+        <p>{{ order.address.state }}</p>
+      </div>
+      <div class="d-flex justify-content-between flex-wrap">
+        <p class="property">Street</p>
+        <p>{{ order.address.street }}</p>
+      </div>
+      <div class="d-flex justify-content-between flex-wrap">
+        <p class="property">Apartment No.</p>
+        <p>{{ order.address.apartmentNo }}</p>
+      </div>
+    </div>
+  </div>
+</div>

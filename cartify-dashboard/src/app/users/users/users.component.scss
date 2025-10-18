@@ -1,0 +1,112 @@
+.users {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  padding-left: 75px;
+  .title {
+    .box {
+      height: 40px;
+      width: 10px;
+      background-color: #f5d714;
+    }
+    .users-title {
+      font-size: 23px;
+      font-weight: 600;
+    }
+  }
+
+  .search-btn {
+    .search {
+      width: 70%;
+      padding-left: 9px;
+      padding-right: 8px;
+      font-size: 14px;
+      border: 1px #8c8c8c solid;
+      height: 33px;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+    }
+    .search:focus {
+      outline: none;
+      border: 1px #f5b214 solid;
+    }
+    .filter-select {
+      width: 100px;
+      height: 33px;
+      font-size: 13px;
+    }
+    .filter-select:focus {
+      outline: none;
+      box-shadow: none;
+      border: 1px #f5b214 solid;
+    }
+    .create-btn {
+      height: 33px;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+      background-color: #f5b214;
+      color: #fff;
+      font-weight: 500;
+      border: none;
+      font-size: 13px;
+    }
+  }
+  .table-container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    .table-wrapper {
+      overflow-x: auto;
+    }
+    table {
+      min-width: 600px;
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      thead th {
+        padding: 15px;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      tbody {
+        td {
+          font-weight: 500;
+          padding: 15px;
+          vertical-align: middle;
+          font-size: 15px;
+        }
+        tr {
+          border-bottom: 1px solid #e0e0e0;
+          .user {
+            img {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              -webkit-border-radius: 50%;
+              -moz-border-radius: 50%;
+              -ms-border-radius: 50%;
+              -o-border-radius: 50%;
+            }
+          }
+          .user-details {
+            a {
+              color: #f5b214;
+            }
+          }
+        }
+        tr:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

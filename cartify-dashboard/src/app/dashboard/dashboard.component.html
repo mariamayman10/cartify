@@ -1,0 +1,133 @@
+<div class="dashboard pt-5 pe-lg-5 pe-md-4 pe-3">
+  <div class="title d-flex mb-4">
+    <p class="dashboard-title">Dashboard</p>
+  </div>
+  <div
+    class="d-flex justify-content-between m-auto gap-3 flex-wrap p-lg-3 p-md-3 p-sm-1 p-0"
+  >
+    <div class="c1">
+      <div class="r1 d-flex gap-3 justify-content-between flex-wrap mb-3">
+        <div class="card">
+          <div class="card-r1 d-flex justify-content-between">
+            <div class="d-flex">
+              <div class="money-icon">
+                <i class="fas fa-money-bill-wave-alt"></i>
+              </div>
+              <p>Total Sales</p>
+            </div>
+            <div><i class="fas fa-ellipsis-h"></i></div>
+          </div>
+          <p class="number">&#36;120,784.02</p>
+          <div class="card-r2 d-flex">
+            <p class="p1-inc me-3">
+              <i class="bi bi-arrow-up-right-square-fill"></i>&nbsp;&nbsp;12.3%
+            </p>
+            <p class="p2">+&#36;1,453.89 today</p>
+          </div>
+          <div class="divider"></div>
+          <a href="" class="view-report">
+            View Report &nbsp; <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="card">
+          <div class="card-r1 d-flex justify-content-between">
+            <div class="d-flex">
+              <div class="money-icon">
+                <i class="fas fa-check"></i>
+              </div>
+              <p>Total Orders</p>
+            </div>
+            <div><i class="fas fa-ellipsis-h"></i></div>
+          </div>
+          <p class="number">952</p>
+          <div class="card-r2 d-flex">
+            <p class="p1-inc me-3">
+              <i class="bi bi-arrow-up-right-square-fill"></i>&nbsp;&nbsp;20.13%
+            </p>
+            <p class="p2">+&#36;+30 today</p>
+          </div>
+          <div class="divider"></div>
+          <a href="" class="view-report">
+            View Report &nbsp; <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="r2 d-flex gap-3 justify-content-between flex-wrap">
+        <div class="card">
+          <div class="card-r1 d-flex justify-content-between">
+            <div class="d-flex">
+              <div class="money-icon">
+                <i class="fas fa-user-friends"></i>
+              </div>
+              <p>Visitor</p>
+            </div>
+            <div><i class="fas fa-ellipsis-h"></i></div>
+          </div>
+          <p class="number">18,879</p>
+          <div class="card-r2 d-flex">
+            <p class="p1-dec me-3">
+              <i class="bi bi-arrow-down-right-square-fill"></i>&nbsp;&nbsp;5.6%
+            </p>
+            <p class="p2">-&#36;876 today</p>
+          </div>
+          <div class="divider"></div>
+          <a href="" class="view-report">
+            View Report &nbsp; <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="card">
+          <div class="card-r1 d-flex justify-content-between">
+            <div class="d-flex">
+              <div class="money-icon">
+                <i class="fas fa-undo"></i>
+              </div>
+              <p>Refunded</p>
+            </div>
+            <div><i class="fas fa-ellipsis-h"></i></div>
+          </div>
+          <p class="number">2,876</p>
+          <div class="card-r2 d-flex">
+            <p class="p1-inc me-3">
+              <i class="bi bi-arrow-up-right-square-fill"></i>&nbsp;&nbsp;13%
+            </p>
+            <p class="p2">&#36;+34 today</p>
+          </div>
+          <div class="divider"></div>
+          <a href="" class="view-report">
+            View Report &nbsp; <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="c2">
+      <div class="r1 d-flex justify-content-between mb-2">
+        <p>Revenue</p>
+        <select class="form-control">
+          <option>Month</option>
+          <option>Year</option>
+        </select>
+      </div>
+      <div class="r2 d-flex justify-content-between flex-wrap">
+        <div class="d-flex">
+          <p class="total me-3">&#36;16,400.12</p>
+          <p class="perc px-2 mb-0">
+            <i class="bi bi-arrow-up-right-square-fill"></i>&nbsp;&nbsp;+10%
+          </p>
+        </div>
+        <div class="d-flex">
+          <div class="profit me-3 d-flex align-items-center">
+            <div class="point-1 me-2"></div>
+            <p class="mb-0">Profit</p>
+          </div>
+          <div class="loss d-flex align-items-center">
+            <div class="point-2 me-2"></div>
+            <p class="mb-0">Loss</p>
+          </div>
+        </div>
+      </div>
+      <div class="chart-container">
+        <canvas id="revenue">{{ chart }}</canvas>
+      </div>
+    </div>
+  </div>
+</div>
